@@ -1,5 +1,5 @@
 
-
+gsap.registerPlugin(ScrollTrigger);
 var tl = gsap.timeline()
 
 const loadingPageAnimation = ()=>{
@@ -61,7 +61,8 @@ const loadingPageAnimation = ()=>{
     tl.to('.skills-section',{
         display:"flex",
         duration:0,
-        delay:-0.8
+        delay:-0.8,
+
     })
     tl.to('.experience-section',{
         display:"flex",
@@ -90,7 +91,25 @@ const loadingPageAnimation = ()=>{
         duration:0.6,
         delay:0.1
     })
-    
+
+
+    tl.to('.imgcontainer',{
+    rotate:8,
+    // duration:,
+    scrollTrigger:{
+        trigger:".aboutmediv",
+        // markers:true,
+        scrub:1,
+        rotate:10,
+        start:"top 80%",
+        end:"bottom 20%"
+
+    }
+
+    }) 
+
+
+
     
 }
 
@@ -147,10 +166,19 @@ setCurrenttime()
 
 const setPercentageAnimation =()=>{
 
+    tl.to("#skills",{
+        scrollTrigger:{
+            trigger:".skills",
+            // markers:true,
+            
+        }
+    })
+
 tl.to('.skills:nth-child(1) .skillPercent',{
     background: "conic-gradient( #462167 0% 100% , transparent 50% 100% )",
     duration:1,
-    ease:Expo.easeInOut
+    ease:Expo.easeInOut,
+   
 })
 tl.to('.skills:nth-child(2) .skillPercent',{
     background: "conic-gradient( #462167 0% 80% , transparent 50% 100% )",
@@ -184,6 +212,37 @@ tl.to('.skills:nth-child(4) .skillPercent',{
 
 setPercentageAnimation()
 
+
+const floatingExperience =()=>{
+    tl.to('#container1',{
+        x:10,
+        y:15,
+        duration:2,
+        repeat:-1,
+        yoyo:true
+
+    })
+    tl.to('#container2',{
+        x:-10,
+        y:25,
+        duration:1,
+        delay:-1,
+        repeat:-1,
+        yoyo:true
+
+    })
+    tl.to('#container3',{
+        x:20,
+        y:-15,
+        duration:3,
+        delay:-1,
+        repeat:-1,
+        yoyo:true
+
+    })
+}
+
+floatingExperience()
 
 
 
